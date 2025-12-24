@@ -1,0 +1,28 @@
+# collection of collections
+#list of lists
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print(matrix[0][1])  # Output: 2
+
+# list of tuples
+points = [(0, 1), (2, 3), (4, 5)]
+print(points[1][0])  # Output: 2
+
+#dictionary of lists
+grades = {"Alice": [85, 90, 95], "Bob": [78, 82, 88]}
+print(grades["Bob"][2])  # Output: 88
+
+#dictionary of dictionaries
+students = {
+    "Alice": {"math": 90, "science": 95},
+    "Bob": {"math": 80, "science": 85}
+}
+print(students["Alice"]["science"])  # Output: 95
+
+#set of tuples
+coordinates = {(1, 2), (3, 4), (5, 6)}
+print((3, 4) in coordinates)  # Output: True
+
+# Notes:
+# 1- no set of lists
+# 2- lists cannot be dictionary keys
+
