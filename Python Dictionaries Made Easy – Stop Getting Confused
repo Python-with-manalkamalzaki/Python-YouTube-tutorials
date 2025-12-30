@@ -1,0 +1,67 @@
+# Examples on dictionary
+# example 1
+# reservation at a hotel, required number of rooms (considering adults only)
+print("=*10 example 1 =*10")
+clients={"name":"alice", "number_of_adults":5, "number_of_children":6 }
+x=clients.get("number_of_adults")
+
+if x%2==0 :             # even number of adults
+    double_rooms=x/2
+    single_rooms=0
+else:                    # odd number of adults
+    double_rooms = x // 2   #// truncates the remainder
+    single_rooms = x % 2    # % gives the remainder which will be 1 for odd numbers
+
+print (double_rooms, single_rooms)
+
+
+# example 2
+# reservation at a hotel,
+# required number of rooms (with maximum 2 children in each double room and maximum 3 if single rooms exist)
+print("=*10 example 2 =*10")
+clients={"name":"alice", "number_of_adults":5, "number_of_children":6}
+x=clients.get("number_of_adults")
+y=clients.get("number_of_children")
+
+double_rooms=x//2  ;print("double_rooms",double_rooms)
+single_rooms=x%2   ;print("single_rooms",single_rooms) 
+
+if x%2!=0 and y==0:             
+    print(f"you reserved {double_rooms} double_rooms                 and {single_rooms} single_rooms")
+else:                           # adults and children
+    if y/double_rooms  <= 2:
+        print(f"you reserved {double_rooms} double_rooms")
+    elif y/(double_rooms+single_rooms) <= 3 and y/(double_rooms+single_rooms)>1:
+        print(f"you reserved {double_rooms} double_rooms and {single_rooms} single_rooms")
+    else:
+        print("you need extra rooms")
+
+
+
+# example3
+subjects= {"math":8,"science":10}
+#for key in subjects.keys():
+    #print(key)
+for key in subjects:
+    print(key)
+for value in subjects.values():
+    print(value)
+for item in subjects.items():
+    print(item)
+
+
+sum=0
+for num in subjects.values():
+    sum +=num
+grad ={"sum":f"{sum}"}
+print(grad)
+
+x=subjects.get("math")
+print(x)
+
+if "math" in subjects:
+    print("math exists")
+    print(f"math grade is: {subjects["math"]}")
+else:
+    print("math is not found")
+
