@@ -1,0 +1,54 @@
+#code 1
+# max and min on lists
+list=[5,6,10,2]
+print(max(list))
+print(min(list))
+
+#code 2
+# max and min on tuples
+food=("orange", "apple", "coconut", "egg")
+print(max(food))
+print(min(food))
+
+#code 3
+# max and min using the key argument
+# max(collection, key=function)
+food=("orange", "Apple", "coconut", "egg")
+shortest_word=min(food, key=len) ;print("shortest_word",shortest_word)  #key=len
+
+lower_case=max(food, key=str.lower)    #the string that comes last(max) in lower case
+print("last in lower_case",lower_case)
+
+lower_case=min(food, key=str.lower)  #the string that comes first(min) in lower case
+print("first in lower_case",lower_case)
+
+list=[5,6,4,2,-7]
+print(max(list, key=abs))  #key=abs
+
+#code 4
+# max and min on list of tuples using the key argument
+subjects= [("math",9),("science",5), ("english", 10)]
+lowest_subject=min(subjects, key=lambda x: x[1]); print("lowest subject is",lowest_subject)
+
+#code 5
+# max and min on dictionaries
+subjects= {"math":8,"science":6, "english":10}
+
+# to get the maximum key
+print(max(subjects))           # --> max key alphabetically
+
+# to get the maximum value
+print(max(subjects, key=subjects.get))
+
+# to get the maximum (key,value)
+key_of_max_value=max(subjects, key=subjects.get)   
+print((key_of_max_value, subjects[key_of_max_value]))
+
+
+
+
+
+
+
+
+
