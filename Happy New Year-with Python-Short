@@ -1,0 +1,65 @@
+import pygame
+import random
+import math
+
+pygame.init()
+
+WIDTH, HEIGHT = 800, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Kid-Friendly Firework 🎆")
+
+clock = pygame.time.Clock()
+GRAVITY = 0.1
+
+
+class Spark:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+        angle = random.uniform(0, 2 * math.pi)
+        speed = random.uniform(2, 5)
+
+        self.dx = math.cos(angle) * speed
+        self.dy = math.sin(angle) * speed
+
+        self.life = 80
+        self.color = random.choice([(255, 0, 0), (255, 255, 0), (0, 200, 255)])
+
+    def move(self):
+        self.dy += GRAVITY      # gravity pulls down
+        self.x += self.dx
+        self.y += self.dy
+        self.life -= 1
+
+    def draw(self):
+        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), 3)
+
+
+def make_firework(x, y):
+    return [Spark(x, y) for _ in range(120)]
+
+
+sparks = make_firework(WIDTH // 2, HEIGHT // 3)
+
+running = True
+while running:
+    clock.tick(60)
+    screen.fill((0, 0, 0))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            sparks = make_firework(x, y)
+
+    for spark in sparks[:]:
+        spark.move()
+        spark.draw()
+        if spark.life <= 0:
+            sparks.remove(spark)
+
+    pygame.display.update()
+
+pygame.quit()
