@@ -1,0 +1,63 @@
+# we need to trace the scientific level of a certain student:
+# List of subject grades tuples: (subject_grade, grade1, grade2, grade3)
+grades = [
+    ("math", 85, 90, 78),
+    ("science", 75, 80, 72),
+    ("english", 95, 100, 98),
+    ("arabic", 60, 65, 58)
+]
+
+print("== Student Averages==: ")
+list_averages=[]
+for subject in grades:
+    subject_name = subject[0]
+    subject_grades = subject[1:]  #forms a tuple of subject_grades for each subject
+    average = sum(subject_grades) / len(subject_grades)
+    print(f"{subject_grades}: {average:.2f}")  # prints the tuple of subject_grades for each subject: average
+    list_averages.append(round(average,2))
+print("list_averages", list_averages)
+# Find subject with greatest average
+
+top_avg=max(list_averages); print("top_avg", top_avg)
+index_top_avg=list_averages.index(max(list_averages))
+print("index_top_avg", index_top_avg)
+top_subject_name=grades[index_top_avg][0]; print("top_subject_name",top_subject_name)
+print(f"\n Top student is {top_subject_name} with an average of {top_avg}")
+
+# advice for faculty using if -elif -else
+if top_subject_name=="math":
+    print("Faculty of engineering is best for you")
+elif top_subject_name=="science":
+    print("Faculty of science is best for you")
+elif top_subject_name == "english":
+    print("Faculty of arts, english department is best for you")
+else:
+    print("Faculty of arts, arabic department is best for you")
+
+print("good luck")
+
+# advice for faculty using while loop
+subject_list = []
+for subject in grades:
+    subject_name = subject[0] ;subject_list.append(subject_name)
+print(subject_list)
+
+faculty =["Faculty of engineering","Faculty of science", "Faculty of arts, english dep","Faculty of arts, arabic dep"]
+
+print(top_subject_name); counter=0
+while counter <4:
+    if top_subject_name == subject_list[counter]:
+        print(f"{faculty[counter]}, is best for you")
+    counter=counter+1
+print("bye")
+
+
+# advice for faculty using for loop
+faculty =["Faculty of engineering","Faculty of science", "Faculty of arts, english dep","Faculty of arts, arabic dep"]
+counter=0
+for subject in grades:
+    if top_subject_name == subject[0]:
+        print(f"you are clever at  {subject[0]}, chose a suitable faculty")
+        print (f"suggested faculty is {faculty[counter]}")
+    counter = counter+1
+
