@@ -1,0 +1,20 @@
+#tuple of lists
+subjects=([5, 6, 7, 8],[5, 10, 4])
+
+counter=0
+total=0
+while counter<2:
+    for subject in subjects:
+        sum_each_subject=sum(subjects[counter])
+    total +=sum_each_subject; print("total=", total)
+    counter +=1
+print(total)
+
+length=0
+for subject in subjects:
+    length_each_subject=len(subject)
+    print(length_each_subject)
+    length +=length_each_subject
+print(length)
+per=total/length
+
