@@ -1,0 +1,26 @@
+# example 1
+subjects={'math': 8, 'science': 10}
+sum=0
+print("subjects",subjects)
+for num in subjects.values():
+    sum +=num
+grad ={"sum":f"{sum}"}    #forms a dictionary
+average=sum/len(subjects);print(f"average = {average:.2f}")
+grad.update({"average": round(average,2)})
+print(grad)
+
+
+# example 2
+subjects={'math': [8,7,10], 'science': [10,9,8,9]}
+sum=0 ;length=0
+print("subjects",subjects)
+for subject in subjects.values():
+    for num in subject:
+        sum +=num
+    grad ={"sum":f"{sum}"}
+    length = length + len(subject)
+average=sum/length;print(f"average = {average:.2f}")
+grad.update({"average": round(average,2)})
+print(grad)
+
+
