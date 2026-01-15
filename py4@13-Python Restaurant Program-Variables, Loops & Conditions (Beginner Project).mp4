@@ -1,0 +1,46 @@
+# Python mini project- a restaurant
+# variables, containers, loops, conditions
+menu = {
+    "Burger": 50,
+    "Pizza": 80,
+    "Pasta": 60,
+    "Fries": 30,
+    "Juice": 20
+}
+
+order = []
+total = 0
+
+print("🍔 Welcome to the Python Restaurant!")
+print("Here is our menu:\n")
+
+# Display menu using for loop
+for item in menu:
+    print(f"{item}: {menu[item]} EGP")
+
+print("\nYou can type the item name to order. Type 'done' to finish.\n")
+
+# Start taking orders using while loop
+while True:
+    choice = input("What would you like to order? ").title()
+
+    if choice == "Done":
+        break
+    elif choice in menu:
+        order.append(choice)
+        total += menu[choice]
+        print(f"{choice} added to your order. Current total: {total} EGP\n")
+    else:
+        print("Sorry, we don't have that item. Please choose from the menu.\n")
+
+# Display final order summary
+print("\n🧾 Your Order Summary:")
+if len(order) == 0:
+    print("You didn't order anything.")
+else:
+    for item in order:
+        print(f" {item} : {menu[item]} LE")
+    print(f"\nTotal to pay: {total} ")
+    print("Thank you for dining with us!")
+
+
