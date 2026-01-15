@@ -1,4 +1,5 @@
-# chatgpt-- variables, containers, loops, conditions
+# Python mini project
+# variables, containers, loops, conditions
 menu = {
     "Burger": 50,
     "Pizza": 80,
