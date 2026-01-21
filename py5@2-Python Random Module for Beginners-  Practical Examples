@@ -1,0 +1,42 @@
+#random module
+#code 1 seat numbers for the exam of students 
+import random
+
+# List of student names
+students = ["Ali", "Sara", "Omar", "Layla", "Youssef", "Nour", "Hana", "Ziad"]
+
+# Generate seat numbers from 1 to number of students
+seat_numbers = list(range(1, len(students) + 1))
+
+# Shuffle seat numbers randomly
+random.shuffle(seat_numbers)
+
+# Assign seat numbers to students
+seating_plan = dict(zip(students, seat_numbers))
+
+# Print the seating plan
+print("🎓 Exam Seating Plan:")
+for student, seat in seating_plan.items():
+    print(f"{student} → Seat {seat}")
+
+#code 2
+import random
+# code 2 # play a game
+print(" try to match your choice with the computer choice")
+fruits=["orange", "apple", "banana"]
+answer2=random.choice(fruits)   
+
+continue_game=True
+
+while continue_game:
+    player=input("enter your choice: orange apple banana:=")
+    if player==answer2:
+        print("you win")
+    else:
+        print("you lose")
+
+    chose_to_continue=input("do you want to continue- enter: y or n")
+    if chose_to_continue=="n":
+        continue_game=False
+print("the computer answer is ", answer2)
+
