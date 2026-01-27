@@ -1,0 +1,53 @@
+#functions      it is a block that can be used whenever called (several times)
+
+#code 1 function with no arguments
+def greet():        
+    print(f"Hello")
+
+greet()  
+greet()   
+
+#code 2  function with arguments
+def greet(name):        
+    print(f"Hello, {name}! Welcome.")
+
+greet("Manal")  
+greet("Zaki")   
+
+#code 3  function with more than one argument
+def greet(name, age):
+    print(f"Hello, {name}, yor age is {age} years")
+
+greet("Manal", 15)
+greet("Zaki", 50)
+
+#code 3  function with more than one argument
+def greet(name, age):
+    age=age -5
+    print(f"Hello, {name}, yor age is {age} years")
+
+greet("Manal", 60)
+
+#code 3  we used the same game given in random module and blocked it in a function
+import random
+
+def game():
+    print(" try to match your choice with the computer choice")
+    fruits=["orange", "apple", "banana"]
+    answer2=random.choice(fruits)   
+    continue_game=True
+
+    while continue_game:
+        player=input("enter your choice: orange apple banana:=")
+        if player==answer2:
+            print("you win")
+        else:
+            print("you lose")
+
+        chose_to_continue=input("do you want to continue- enter: y or n")
+        if chose_to_continue=="n":
+            continue_game=False
+    print("the computer answer is ", answer2)
+
+game()  # calls the function
+
