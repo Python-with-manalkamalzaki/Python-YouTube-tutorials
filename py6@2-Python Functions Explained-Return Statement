@@ -1,0 +1,39 @@
+#functions with return
+#code 1
+def name(f,l):
+    f=f.capitalize()
+    l=l.capitalize()
+    return f+" "+l
+x= name("manal","zaki")
+print (x)
+
+#code 2
+def add (x, y):
+    z=x+y
+    return z
+result=add(5,3)
+print(result)
+print(add(5, 3))
+
+#code 3
+fruits=["orange", "apple", "banana"]
+vegetables=["spinash", "okra", "tomato"]
+def name(fruits, vegetables):
+     x=len(fruits)
+     y=len(vegetables)
+     return x+y
+name(fruits,vegetables)
+print(name(fruits, vegetables))           #print the return of the function
+
+#code 4
+fruits=["orange", "apple", "banana"]
+vegetables=["spinash", "okra", "tomato"]
+
+def name(fruits, vegetables):
+    return fruits + vegetables
+print (name(fruits, vegetables))               #print the return of the function
+
+
+
+
+
