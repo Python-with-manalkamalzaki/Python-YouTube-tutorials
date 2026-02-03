@@ -1,0 +1,33 @@
+#functions
+#code 1-local variables: fruits and vegetables, defined inside the function
+#functions with no arguments
+def name():
+    fruits = ["orange", "apple", "banana"]
+    vegetables = ["spinash", "okra", "tomato"]
+    x=len(fruits)
+    y=len(vegetables)
+    return x+y
+name()             # call has no parameters
+print(name())           #print the return if the function
+
+#code 2-global variables: fruits and vegetables, defined outside the function
+# functions with  arguments
+fruits=["orange", "apple", "banana"]
+vegetables=["spinash", "okra", "tomato"]
+def name(fruits, vegetables):
+     x=len(fruits)
+     y=len(vegetables)
+     return x+y
+name(fruits,vegetables)      # call has  parameters
+print(name(fruits, vegetables))           #print the return if the function
+
+#code 3  #variables can be directly passed as parameters while calling the function
+def name(fruits, vegetables):
+     x=len(fruits)
+     y=len(vegetables)
+     return x+y
+name(["orange", "apple", "banana"],["spinash", "okra", "tomato"])
+print(name(fruits, vegetables))           #print the return of the function
+
+
+
