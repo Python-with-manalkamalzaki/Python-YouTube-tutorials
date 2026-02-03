@@ -1,0 +1,22 @@
+#functions
+#code 1
+f=input(str("enter your first name"))
+m=input(str("enter your middle name"))
+l=input(str("enter your last name"))
+
+# the outer function capitalizes the first letter
+# the inner function checks the middle letter
+def name_in_capital(f,m,l): 
+    def name():              
+        if m=="":
+            print("your middle name is ommitted")
+        else:
+            print ("your name is full")
+    name()                    # call of inner function
+    f=f.capitalize()
+    m=m.capitalize()
+    l=l.capitalize()
+    print(f+" " + m +" "+ l)
+name_in_capital(f,m,l)         # call of outer function
+# print (x)
+
