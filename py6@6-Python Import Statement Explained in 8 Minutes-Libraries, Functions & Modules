@@ -1,0 +1,29 @@
+# Import
+# 1- we can import a library #syntex used: library.function
+# 2- we can import a certain function from the module
+# 3- we can import our created module
+
+#code 1- we import the library 'math'
+# code 1
+import math           # we import the library called math
+print(math.sqrt(16))  # the function 'sqrt' gives the square root
+
+#code 2
+import math as arithmatic  # we can give it another name (Alias)
+print(arithmatic.sqrt(16))
+
+#code 3- we import the function 'sqrt' from the library 'math'
+from math import sqrt, pi
+print(sqrt(25))
+print(pi)
+
+from  math import sqrt as squareroot  # function as alias
+print(squareroot(100))
+
+
+# code 4- we can import our created module
+import my_math
+my_math.area_square(5)
+my_math.area_rect(3,4)
+my_math.area_circle(7)
+
