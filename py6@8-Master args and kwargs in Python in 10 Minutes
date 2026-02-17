@@ -1,0 +1,60 @@
+# *args and **kwargs are used in functions to accept variable numbers of arguments.
+# *args is invoked using a tuple
+# **kwargs is invoked using a dictionary
+
+#code 1
+def add(*args):    #*args are the arguments in the tuple
+    sum=0
+    for number in args:
+        sum +=number
+    return sum
+print(add(1, 2, 3, 4))  #we call the function with the tuple as a parameter
+                              # print what is returned in the function
+#code 2
+def add(*tuple_numbers):    #*tuple_numbers are the arguments in the tuple
+    sum=0
+    for number in tuple_numbers:
+        sum +=number
+    return sum
+print(add(1, 2, 3, 4))  # print what is returned in the function
+
+#code 3
+def vegetables(*args):
+     for vegetable in args:
+         print(f"I love {vegetable}")
+print(vegetables("spinash", "okra", "tomato"))
+
+#code 3
+def student_grades(**kwargs): #*kwargs are the arguments in the dictionary
+     for key in kwargs.keys():
+         print(f"key is {key}")    #print keys
+     for value in kwargs.values():
+         print(f"value is {value}")    #print values
+     for key,value in kwargs.items():
+         print(f"{key} -- {value}")    #print items
+     for item in kwargs.items():
+         print(f"{item}")            #print items in a different way
+     total=0
+     for i in kwargs.values():
+          total+=i
+     print(total)
+student_grades( math=10, science=8) #notice the different way the dictionary is expressed
+
+#code 4  # to start adding values from the second index ie index=1
+# form a list called values(in this example) containing the values from the second index
+def student_grades(**kwargs): #*kwargs are the arguments in the dictionary
+     values=[value for key, value in list(kwargs.items())[1:]]
+     print(values)
+     x=sum(values); print (x)
+student_grades(name="alice", math=10, science=8)
+
+#code 4  # to start adding values from the second index ie index=1
+def student_grades(**kwargs): #*kwargs are the arguments in the dictionary
+     values=[value for key, value in list(kwargs.items())[1:]]
+     print(values)
+     x=0
+     for grade in values:
+         x+= grade; print(x)
+student_grades(name="alice", math=10, science=8)
+
+
