@@ -1,0 +1,133 @@
+#*args and **kwargs together
+#code 1  order pizza
+def order_pizza(customer_name, *toppings, **details):
+    print(f"\nHello {customer_name}, thanks for your order!")
+
+    # Display toppings
+    if toppings:
+        print("You ordered a pizza with the following toppings:")
+        for topping in toppings:
+            print(f"- {topping}")
+    else:
+        print("You ordered a plain cheese pizza.")
+
+    size = details.get("size"); crust = details.get("crust"); time = details.get("delivery_time_min")
+
+    print(f"Pizza size: {size}, Crust type: {crust}, time to deliver in min.: {time}" )
+
+# code1- usages:
+order_pizza("Alice",
+    "chicken", "all_meat", "sea_food",
+    size="large", crust="thin", time=45)
+
+order_pizza("Bob", size="small")
+
+#code 2  order pizza with *args as a list
+print("\n--- order pizza ---")
+topping_list=["chicken", "all_meat", "sea_food"] ;print(topping_list)
+
+def order_pizza(customer_name, *toppings, **details):
+    customer_name = input("please, enter your name :")  # client name
+    print(f"\nHello {customer_name}, thanks for your order!")
+
+    # Display toppings
+    if toppings:
+        print("You ordered a pizza with the following toppings:")
+        for topping in toppings:
+            print(f"- {topping}")
+    else:
+        print("You ordered a plain cheese pizza.")
+
+    # Show additional details
+    size = details.get("size");  crust = details.get("crust"); time = details.get("delivery_time_min")
+
+    print(f"Pizza size: {size}, Crust type: {crust}, time to deliver in min.: {time}" )
+
+# code 2- usages:
+order_pizza("customer_name",topping_list,
+    size="large", crust="thin", delivery_time_min=45)
+
+#code 3  order pizza with *args as a list and **kwargs as dictionary
+print("\n--- order pizza ---")
+topping_list=["chicken", "all_meat", "sea_food"] ;print(topping_list)
+detail_dictionary={"size": "medium", "crust": "regular","delivery_time_min": 30}
+
+def order_pizza(customer_name, *args, **kwargs):
+    customer_name = input("please, enter your name :")  # client name
+    print(f"\nHello {customer_name}, thanks for your order!")
+
+    # Display toppings
+    if args:
+        print("You ordered a pizza with the following toppings:")
+        for topping in args:
+            print(f"- {topping}")
+    else:
+        print("You ordered a plain cheese pizza.")
+
+    # Show additional details
+    size = kwargs.get("size")
+    crust = kwargs.get("crust")
+    delivery = kwargs.get("delivery_time_min")
+
+    print(f"Pizza size: {size}")
+    print(f"Crust type: {crust}")
+    print(f"Estimated delivery time in minutes: {delivery}")
+
+# code 3- usages:
+order_pizza("customer_name=name", *topping_list, **detail_dictionary)
+
+order_pizza("customer_name", **detail_dictionary)
+
+#code 4  order pizza with *args as a selected list and **kwargs as a selected dictionary
+print("\n--- order pizza ---")
+topping_list=["chicken", "all_meat", "sea_food"] ;print("topping_list=",topping_list)
+detail_dictionary={"size": "medium", "crust": "regular","delivery_time_min": 30}
+
+chosen_toppings=[]
+chosen_details={}
+def order_pizza(customer_name, *args, **kwargs):
+    customer_name = input("please, enter your name :")  # client name
+    print(f"\nHello {customer_name}, thanks for your order!")
+    print("print q to quit")
+    # chose toppings
+    while True:
+        choice_1= input("enter your topping choices from  topping_list")
+        if choice_1 == "q":
+            print("you exit")
+            break
+        elif choice_1 in topping_list:
+            chosen_toppings.append(choice_1)
+        else:
+            print("invalid choice, try again")
+
+    if chosen_toppings:
+        print("You ordered a pizza with the following toppings:")
+        for topping in chosen_toppings:
+            print(f"- {topping}")
+    else:
+        print("You ordered a plain cheese pizza.")
+    # chose details
+    while True:
+        choice_2= input("enter your key choices from detail_dictionary")
+        if choice_2 == "q":
+            print("you exit")
+            break
+        elif choice_2 in detail_dictionary:
+            chosen_details[choice_2]=detail_dictionary[choice_2]
+            print(f"added: {choice_2}: {detail_dictionary[choice_2]}")
+        else:
+            print("invalid choice, try again")
+
+    size = kwargs.get("size")
+    crust = kwargs.get("crust")
+    delivery = kwargs.get("delivery_time_min")
+
+    print(f"Pizza size: {size}")
+    print(f"Crust type: {crust}")
+    print(f"Estimated delivery time in minutes: {delivery}")
+
+# code 4- usages:
+order_pizza("customer_name", *chosen_toppings, **chosen_details)
+
+# order_pizza("customer_name", **detail_dictionary)
+
