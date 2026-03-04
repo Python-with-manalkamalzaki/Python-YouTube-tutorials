@@ -1,0 +1,23 @@
+# In Python, a class serves as a template for creating objects.
+# It encapsulates data (attributes) and functions (methods) that operate on that data.
+# Classes are fundamental to object-oriented programming (OOP) in Python,
+# because they enable the creation of reusable and organized code.
+
+# classes - introduce methods
+class Mammals:
+    def give_birth(self):
+        print("this animal gives birth")
+    def move(self):
+        print("I can move")
+
+class Non_mammals:
+    def lay_eggs(self):
+        print(" i can lay eggs")
+
+hen=Non_mammals()
+hen.lay_eggs()
+
+# dog=Mammals()
+# dog.give_birth()
+# dog.move()
+
