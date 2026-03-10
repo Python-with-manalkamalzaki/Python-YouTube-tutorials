@@ -1,0 +1,58 @@
+# functions  __init__
+# it is a dunder method or magic method
+# dunder methods are preceded and proceeded with double underscores
+# __init__ is a magic method called 'constructor'
+# crucial for understanding python classes and objects
+# __init__ method is automatically called on creating an instance of a class
+# __init__ method  initializes the attributes (properties) of an object during object creation
+
+# code 1
+class Student:
+    def __init__ (self,name, age):  # name & age are arguments
+        self.name=name   # self points to the current instance
+        self.age=age     # name & age associated with self are attributes
+
+    def action(self):    # action method is added to the class
+        print(f"The the student {self.name} goes to school every day")
+
+student_1 = Student("Tom", 12)  # Tom & 12 are attributes
+# when the instance (class object) student_1 is created, it automatically calls the __init__ method:
+# self is passed to student_1 ie, it refers to the current instance
+# the attributes Tom & 12 are passed to the arguments name & age
+print(student_1.name)        # instance.attribute
+print(student_1.age)         # instance.attribute
+print(student_1.action())    # instance.method
+
+# code 2 To understand self, we can write
+class Student:
+    def __init__ (st,name, age): # st points to the current instance,student_1
+        st.name=name
+        st.age=age
+
+    def action(st):
+        print(f"The the student {st.name} goes to school every day")
+
+student_1 = Student("Tom", 12)  # Tom & 12 are attributes
+print(student_1.name)
+print(student_1.age)
+print(student_1.action())
+
+# code 3  classes - introduce attributes and methods
+class Mammals:
+    def __init__(self, name): # self refers to mammal_1
+        self.name=name   # instance attribute
+
+    def give_birth(self):  # instance method with argument self
+        print(f" A {self.name} gives birth")
+
+    def move(self, movement):  # instance method with 2 arguments
+        print(f" A {self.name} can {movement}")
+
+mammal_1=Mammals("dog") # create the class object
+mammal_1.move("walk")   # instance.method
+mammal_1.give_birth()   # instance.method
+
+mammal_2=Mammals("bat") # create the class object
+mammal_2.move("fly")
+mammal_2.give_birth()
+
