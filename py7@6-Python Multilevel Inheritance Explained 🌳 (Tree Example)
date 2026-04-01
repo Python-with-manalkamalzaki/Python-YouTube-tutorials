@@ -1,0 +1,35 @@
+#degraded class  py7@6
+#code 1  # class Tree
+class Tree:    # Base class  # generation 1 class -Tree
+    def __init__(self, species):
+        self.species = species
+
+    def describe(self):
+        print(f"This is a {self.species} tree.")
+
+class Roots(Tree):  # generation 2 class  -- Roots -- inherits from generation 1
+    def absorb_water(self):
+        print(f"The roots of the {self.species} tree absorb water and minerals from the soil.")
+
+class Trunk(Tree): # generation 2 class  -- Trunk -- inherits from generation 1
+    def support(self):
+        print(f"The trunk of the {self.species} tree supports the branches and leaves.")
+
+class Branch(Trunk): # generation 3 class  -- Branch -- inherits from generation 2
+    def grow(self):
+        print(f"The branches of the {self.species} tree spread out to support the leaves.")
+
+class Leaf(Branch): # generation 4 class  -- Leaf -- inherits from generation 3
+    def photosynthesis(self):
+        print(f"The leaves of the {self.species} tree perform photosynthesis.")
+
+# Create a Leaf object, which inherits all properties
+my_tree = Leaf("Mango")  # object= child class (Base class attributes)
+
+# Call all methods
+my_tree.describe()           # From Tree
+my_tree.absorb_water()       # From Roots
+my_tree.support()            # From Trunk
+my_tree.grow()               # From Branch
+my_tree.photosynthesis()     # From Leaf
+
