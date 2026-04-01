@@ -1,0 +1,43 @@
+# py7@3 Class variables & instance variables
+
+#code 1  # class variables & instance variables
+class Mammals:
+    # class variables shared among all instances of the class
+    # because they belong to the class itself, not individual objects.
+    # they are defined outside the class methods
+    life="living creatures" # class variable
+    examples_of_mammals=0   # class variable
+
+    def __init__(self, name):
+        # self.name: is stored for each specific mammal object
+        self.name = name   # instance variable
+        Mammals.examples_of_mammals += 1
+
+    def move(self, movement):  # instance method with 2 arguments
+        print(f" A {self.name} can {movement}")
+
+    def give_birth(self):
+        print(f"{self.name} gives birth")
+
+mammal_1=Mammals("dog") # create the class object
+mammal_1.move("walk")   # instance.instance method
+mammal_1.give_birth()   # instance.instance method
+
+print(mammal_1.life)     # instance.class method
+
+mammal_2=Mammals("bat") # create the class object
+mammal_2.move("fly")
+mammal_2.give_birth()
+
+mammal_3=Mammals("whale") # create the class object
+mammal_3.move("swim")
+mammal_3.give_birth()
+#print(dog.move)
+print(f"all mammals are {Mammals.life} and examples count {Mammals.examples_of_mammals}")  #examples_of_mammals is completed after creating all objects
+
+# all methods inside the class are instance methods:
+
+# __init__: The constructor, runs automatically when you create an object
+# move: Takes an extra argument (movement) and prints the movement of each mammal
+# give_birth: Just prints a message
+
