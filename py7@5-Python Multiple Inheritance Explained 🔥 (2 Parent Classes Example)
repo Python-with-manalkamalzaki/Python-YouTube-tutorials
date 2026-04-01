@@ -1,0 +1,37 @@
+#Py 7@5
+#code 1- multiple inheritance   #class inherits from 2 classes
+class Mammals:
+    def give_birth(self):
+        print("this animal gives birth")
+
+class Non_mammals:
+    def lay_eggs(self):
+        print("this animal lays eggs")
+class Pets:
+    def home(self):
+        print("this animal can be kept at your home")
+
+class Wild:
+    def forest(self):
+       print("this animal lives in forests")
+
+# class Dog(Mammals):
+#     def greeting(self):
+#         print("dogs wag their tails to greet friends")
+class Dog(Mammals, Pets):
+    def greeting(self):
+        print("dogs wag their tails to greet friends")
+
+class Eagle(Non_mammals, Wild):
+    def animal(self):
+        print("Eagles are wild birds")
+
+dog=Dog()        # we must create an object  # object=child class()
+dog.give_birth()    #object.method of parent class
+dog.home()          #object.method of parent class
+dog.greeting()      #object.method of child class
+
+eagle=Eagle()
+eagle.lay_eggs()
+eagle.animal()
+
