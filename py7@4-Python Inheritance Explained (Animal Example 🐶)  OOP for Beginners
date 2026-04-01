@@ -1,0 +1,36 @@
+# py7@4 Class inheritance-basic
+# code 1- inheritance
+# self is only valid inside class methods, it cannot be used outside the class
+class Animals:
+    def __init__(self,name, move):
+        self.alive=True
+        self.move=move
+        self.name = name
+# the child class inherits from the parent class.
+# class Mammals inherits from the class Animals.
+class Mammals(Animals):
+    def give_birth(self):
+        print(f"A {self.name} gives birth")
+
+# class Non_mammals inherits from the class Animals
+class Non_mammals(Animals):
+    def lay_eggs(self):
+        print(f"A {self.name} lays eggs")
+
+dog=Mammals("dog", "walk")  # we must create an object  # object=child class(argument of parent class)
+bat=Mammals("bat","fly")
+whale=Mammals("whale","swim")
+fish=Non_mammals("whale","swim")
+# To access an object's attribute outside the class,
+# use the object's name, like dog.name, not self.name
+
+#print(f"{dog.name} can {dog.move}")   # instance.parent attribute
+#print(f"dogs are {dog.alive}, they can {dog.move} ") # instance.parent attribute
+print(dog.give_birth()) # returns None because give_birth() method already contains print and returns nothing.
+dog.give_birth()     # instance.child method
+
+# for a full statement
+print(f"{dog.name} can {dog.move} and it ", end="")  #end joins the following line
+dog.give_birth()  #for a full statement -  
+# do not use print for instance.child method
+
