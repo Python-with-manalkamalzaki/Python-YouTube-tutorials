@@ -1,0 +1,19 @@
+# Nested classes
+# outer class calls the inner class
+# class-objects (instances) are created using outer class
+class Book:  #outer class
+    def __init__(self, title, author, type):
+        self.title=title
+        self.data=self.Book_data(author, type)
+    def display_book(self):
+        print(f"title is {self.title}")
+        self.data.display_book_data()
+    class Book_data: #inner class
+        def __init__(self,author, type):
+            self.author=author
+            self.type=type
+        def display_book_data(self):
+            print(f"author={self.author}, type={self.type}")
+
+book_1=Book("The Skrewtape Letters", "CS-Lewis", "fiction")
+book_1.display_book()
