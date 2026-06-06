@@ -1,0 +1,46 @@
+class Book:
+    def __init__(self, title, author, type):
+        self.title=title
+        self.data=self.Book_Data(author, type)
+        
+    def display_book(self):
+        print(f"title 0f book is: ={self.title}")
+        self.data.display_book_data()
+        
+
+    class Book_Data:
+        def __init__(self, author, type):
+            self.author = author
+            self.type = type
+
+        def display_book_data(self): # has self because it os an instance method
+            print(f"author={self.author}, type={self.type}")
+
+# create an object book_1  #object= class(attributes)
+book_1=Book("Hi", "CS-Lewis", "fiction")
+book_1.display_book()        # object.method of outer class
+
+#code 2 nested class
+class Animals:
+    def __init__(self,animal_alive):
+        self.alive=animal_alive
+        self.mammal1=self.Mammals(name="cat", move="walk") 
+        self.mammal2 = self.Mammals(name="bat", move="fly")
+        self.mammal3 = self.Mammals(name="whale", move="swim")
+    def display_animal(self):          # attributes of inner_class passed
+        print(self.alive)
+        self.mammal1.display_mammal()
+        self.mammal2.display_mammal()
+        self.mammal3.display_mammal()
+    class Mammals:
+        def __init__(self,name,move):
+            self.name = name
+            self.move=move
+
+        def display_mammal(self):
+            print(f"this mammal has the name {self.name},it can {self.move}")
+
+
+animal=Animals(animal_alive="animals are living creatures")
+animal.display_animal()  
+
