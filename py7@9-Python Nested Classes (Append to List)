@@ -1,0 +1,25 @@
+# Nested classes with append
+class Animals:
+    def __init__(self,animal_alive):
+        self.alive=animal_alive
+        self.mammals=[]
+    def add_mammals(self, name,move):
+        new_mammal=self.Mammals(name,move)
+        self.mammals.append(new_mammal)
+    def display_animal(self):
+        print(self.alive)
+        return [mammal.display_mammal()for mammal in self.mammals]
+    class Mammals:
+        def __init__(self, name, move):
+            self.name=name
+            self.move=move
+        def display_mammal(self):
+            print((f"This mammal has the name {self.name} and can {self.move}"))
+
+all_animals=Animals(animal_alive="living creatures")
+all_animals.add_mammals("dog","jump")
+all_animals.add_mammals("bat","fly")
+all_animals.add_mammals("whale","swim")
+for mammal in all_animals.display_animal():
+    print(mammal)
+
