@@ -1,0 +1,77 @@
+from abc import ABC, abstractmethod # we have 2 imports here
+# abc = abstract base classes    # ABC = abstract base class
+# Abstract base class
+class Tree(ABC):                # Tree is an abstract class that inherits from the abstract base class (ABC)
+    def __init__(self, species):
+        self.species = species
+
+    @abstractmethod  # a decorator to declare an abstract method
+    def describe(self):
+        pass
+    # describe() is an abstract method created by the imported abstractmethod
+    # the created methods will be inherited by children
+    # that must be implemented.
+
+# First derived class
+class Roots(Tree):    # Roots implements describe() so all its child classes don't have to.
+    def absorb_water(self):
+        print(f"The roots of the {self.species} tree absorb water and minerals from the soil.")
+
+    def describe(self):  # define all the abstract methods in the child class
+        print(f"This is a {self.species} tree.")
+
+# mango_tree=Tree(mango)   # gives an error because objects cannot be created from abstract classes
+# Instantiate final subclass
+my_tree = Roots("Pine")
+
+# Call all methods
+my_tree.describe()           # Implemented in Roots
+my_tree.absorb_water()       # From Roots
+
+# code 3
+from abc import ABC, abstractmethod # we have 2 imports here
+
+class Tree(ABC):
+    def __init__(self, species):
+        self.species = species
+
+    @abstractmethod  # a decorator to declare an abstract method
+    def describe(self):
+        pass
+    
+# First derived class
+class Roots(Tree):    # Roots implements describe() so all its child classes don't have to.
+    def absorb_water(self):
+        print(f"The roots of the {self.species} tree absorb water and minerals from the soil.")
+
+    def describe(self):  
+        print(f"This is a {self.species} tree.")
+
+# Second derived class
+class Trunk(Tree):
+    def support(self):
+        print(f"The trunk of the {self.species} tree supports the branches and leaves.")
+
+     def describe(self):  
+        print(f"This is a {self.species} tree.")
+
+# Third derived class
+class Branch(Trunk):
+    def grow(self):
+        print(f"The branches of the {self.species} tree spread out to support the leaves.")
+
+# Fourth derived class
+class Leaf(Branch):
+    def photosynthesis(self):
+        print(f"The leaves of the {self.species} tree perform photosynthesis.")
+
+# mango_tree=Tree(mango)   # gives an error because objects cannot be created from abstract classes
+# Instantiate final subclass
+my_tree = Leaf("Pine")
+
+# Call all methods
+my_tree.describe()           # Implemented in Roots
+my_tree.support()            # From Trunk
+my_tree.grow()               # From Branch
+my_tree.photosynthesis()     # From Leaf
+
