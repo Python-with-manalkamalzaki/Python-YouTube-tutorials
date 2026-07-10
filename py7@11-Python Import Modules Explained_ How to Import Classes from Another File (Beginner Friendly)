@@ -1,0 +1,10 @@
+# import module
+# from file import module
+from animals import Mammals
+
+Mammal_1=Mammals("dog","walk")
+Mammal_2=Mammals("bat","fly")
+Mammal_3=Mammals("whale","swim")
+
+print(f"all mammals are {Mammals.life}" )
+
