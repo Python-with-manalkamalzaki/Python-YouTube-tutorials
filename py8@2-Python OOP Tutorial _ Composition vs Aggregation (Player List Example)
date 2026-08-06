@@ -1,0 +1,74 @@
+# Team and players
+# composition
+# Team creates its Players
+class Player:
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+    def get_details(self):
+        return f"Player: {self.name}, Position: {self.position}"
+
+    def train(self):
+        print(f"{self.name} is training hard as a {self.position}.")
+
+class Team:
+    def __init__(self, team_name):
+        self.team_name = team_name
+        self.players = [
+            Player("Alice", "Forward"),
+            Player("Bob", "Goalkeeper")
+        ]  # Players are composed here
+
+    def show_team(self):
+        print(f"Team: {self.team_name}")
+        for player in self.players:
+            print(player.get_details())
+
+    def train_team(self):
+        print(f"Training session for {self.team_name}:")
+        for player in self.players:
+            player.train()
+
+# Example usage
+team1 = Team("Red Dragons")
+team1.show_team()
+team1.train_team()
+
+# aggregation
+# Players are created outside and passed to Team
+class Player:
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+    def get_details(self):
+        return f"Player: {self.name}, Position: {self.position}"
+
+    def train(self):
+        print(f"{self.name} is training hard as a {self.position}.")
+
+class Team:
+    def __init__(self, team_name, players):
+        self.team_name = team_name
+        self.players = players  # Aggregated players
+
+    def show_team(self):
+        print(f"Team: {self.team_name}")
+        for player in self.players:
+            print(player.get_details())
+
+    def train_team(self):
+        print(f"Training session for {self.team_name}:")
+        for player in self.players:
+            player.train()
+
+# Create players independently
+player1 = Player("Charlie", "Defender")
+player2 = Player("Dana", "Midfielder")
+
+# Aggregate them into a team
+team2 = Team("Blue Hawks", [player1, player2])
+team2.show_team()
+team2.train_team()
+
