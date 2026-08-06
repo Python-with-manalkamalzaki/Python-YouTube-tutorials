@@ -1,0 +1,71 @@
+# my computer: composition -- aggregation
+# code 1 -- composition:
+# composition  # the keyword is "part_of", ie contents are part of the container
+class Computer:  # container class
+    def __init__(self,processor, cores, language, connection):
+        self.cpu=Cpu(processor, cores)
+        self.keyboard=Keyboard(language)
+        self.mouse=Mouse(connection)
+    def display_computer(self):
+        return f"{self.cpu.processor}, {self.cpu.cores},{self.keyboard.lan},{self.mouse.con}"
+
+class Cpu:  #content class
+    def __init__(self, processor, cores):
+        self.processor=processor
+        self.cores=cores
+class Keyboard:  #content class
+    def __init__(self, language):
+        self.lan=language
+class Mouse:  #content class
+    def __init__(self, connection):
+        self.con=connection
+
+computer1=Computer(processor="Intel", cores=4,language="English", connection="wireless")
+computer2=Computer(processor="AMD", cores=2,language="Arabic", connection="with_wire")
+print(computer2.display_computer())
+
+
+
+# code 2 -- aggregation:
+# aggregation  # the keyword is "has_a", ie the computer has: Cpu, Keyboard and Mouse.
+class Computer: #container class
+    def __init__(self, cpu, keyboard, mouse):
+        self.cpu = cpu
+        self.keyboard=keyboard
+        self.mouse=mouse
+    def display_computer(self):
+        return f"{self.cpu.processor}, {self.cpu.cores},{self.keyboard.lan},{self.mouse.con}"
+class Cpu:  #part class
+    def __init__(self, processor, cores):
+        self.processor=processor
+        self.cores=cores
+class Keyboard:  #part class
+    def __init__(self, language):
+        self.lan=language
+class Mouse:  #part class
+    def __init__(self, connection):
+        self.con=connection
+
+cpu1=Cpu(processor="Intel", cores=4)
+keyword1=Keyboard(language="English")
+mouse1=Mouse(connection="wireless")
+
+computer1=Computer(cpu1,keyword1,mouse1)
+print(computer1.display_computer())
+
+
+
+
+
+
+# differences between composition and aggregation:
+# 1- creation of objects:
+     # composition: created inside the constructor of the container class in
+     # aggregation: passed inside the constructor of the container class as self.cpu=cpu
+# 2- objects owned by container:
+     # composition: yes
+     # aggregation: no
+# 3- life dependency:
+     # composition: parts die with whole
+     # aggregation: Part can outlive or be shared
+
