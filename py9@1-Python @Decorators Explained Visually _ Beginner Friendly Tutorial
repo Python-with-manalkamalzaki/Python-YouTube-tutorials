@@ -1,0 +1,47 @@
+# function decorators
+
+# example 1
+def decorator_athlete (func):        decorator function must have an argument, usually called func
+    def inner ():                    # inner (nested) function in the decorator
+        print("the athlete trained alot")                  # code before function
+        func()                       # call the function which is now our function
+        print("he won a medal")                            # code after function
+    return inner                                    # inner()  -- without brackets
+
+@decorator_athlete
+def play_matches():                                # base function
+    print("he played many matches to reach the final")
+
+play_matches()
+
+#example 2
+def decorator_athlete (func):        # decorator function must have an argument, usually called func
+    def inner (name):                    # inner (nested) function in the decorator
+        print(f"the athlete, {name}, trained alot")                  # code before function
+        func(name)                       # call the function which is now our function
+        print(f"{name} won a medal")                            # code after function
+    return inner                                    # inner()  -- without brackets
+
+@decorator_athlete
+def play_matches(name):                                # base function
+    print(f"{name} played many matches to reach the final")
+
+play_matches("Sandy")
+
+# example 3
+def geometry_decorator (func):        # decorator function must have an argument, usually called func
+    def square ():                    # inner (nested) function in the decorator
+        side=int(input ("enter the side of the square"))                  # code before function
+        area = side * side
+        print(f"area of the square whose side is {side} ={area}")
+        func(side)                       # call the function which is now our function
+        print("properties of the square are done!")                            # code after function
+    return square
+
+@geometry_decorator
+def square_perimeter(side):                                # base function
+    perimeter = side * 4
+    print(f"the perimeter= {perimeter}")
+
+square_perimeter()
+
