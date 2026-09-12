@@ -1,0 +1,144 @@
+#property decorator
+
+#code 1
+# getters and setters -- Accessors and mutators
+# getters are methods to (get the value of an attribute)
+# setters are methods to (set the value of an attribute)
+# 1st approach: use built in methods of getters and setters---- getattr and setattr----
+# getattr is a method to get the object by an attribute--(get the value of an attribute)
+# setattr is a method to set an object by 3 attributes which are (object, first attribute, new attribute)--(set the value of an attribute)
+# setattr is a method to delete an object--(delete an attribute)
+# we use dot notation --eg.-- x.std.reg   then    std.reg="aa_01"
+class Bank_Client:
+    def __init__(self, name, local_deposit, dollar_deposit):
+        self.name=name
+        self.local_deposit=local_deposit
+        self.dollar_deposit=dollar_deposit
+
+#  main Program  #
+client_1=Bank_Client("manal", 1000, 200)
+client_2=Bank_Client("manal", 1000, 200)
+
+#print(client_2)       # does not give expected data
+print(getattr(client_2, "name"))
+print(getattr(client_2, "local_deposit"))
+
+# setattr(client_2, "local_deposit", 3000)
+# print(getattr(client_2, "local_deposit"))
+
+attr="local_deposit"
+setattr(client_2, attr, 5000)
+print(getattr(client_2, attr))
+
+#2nd approach:
+#get_attribute and set_attribute
+class Bank_Client:
+    def __init__(self, name, local_deposit, dollar_deposit):
+        self.name=name
+        self.local_deposit=local_deposit
+        self.dollar_deposit=dollar_deposit
+
+    def get_name(self):
+        return self.name
+    def set_name(self, newname):
+        self.name=newname
+
+    def get_local_deposit(self):
+        return self.local_deposit
+    def set_local_deposit(self, newlocal_deposit):
+        self.local_deposit = newlocal_deposit
+
+    def get_dollar_deposit(self):
+        return self.dollar_deposit
+    def set_dollar_deposit(self, newdollar_deposit):
+        self.name = newdollar_deposit
+
+
+#  main Program  #
+client_1=Bank_Client("manal", 1000, 200)
+client_2=Bank_Client("Sandy", 1000, 200)
+
+print(client_1.get_name())
+client_2.set_name("Sue")
+print(client_2.get_name())
+
+#3rd approach: code 1
+#use property decorator -- @property
+class Bank_Client:
+    def __init__(self, name, local_deposit, dollar_deposit):
+        self.name=name
+        self.local_deposit=local_deposit
+        self.dollar_deposit=dollar_deposit
+
+    @property
+    def fulldata(self):
+        return f"client name is: {self.name} local_deposite={self.local_deposit} dollar_deposit={self.dollar_deposit}"
+
+    @property
+    def name(self):         # we decorate this method with a property decorator in order to be a getter method
+        #return self._name
+        return f"client name is: {self._name}"  # _ means internal, we cannot access this attribute outside the class
+    @name.setter
+    def name(self, newname):
+        self._name=newname                     # _ means internal, we cannot access this attribute outside the class
+
+#  main Program  #
+client1=Bank_Client("manal", 1000, 200)
+client2=Bank_Client("Sandy", 1000, 200)
+
+print (client2.name)                         # we did not use _    ie to be used only inside the class
+print (client2.fulldata)
+client2.newname="sue"
+print (client2.newname)
+
+# 3rd approach: code 2
+#use property decorator -- @property
+class Bank_Client: # accepts only two arguments in the init function
+    def __init__(self, name, local_deposit):
+        self.name=name
+        self.local_deposit=local_deposit
+
+    @property
+    def fulldata(self):
+        return f"client name is: {self.name} local_deposit={self.local_deposit} "
+
+    @property
+    def name(self):         # we decorate this method with a property decorator in order to be a getter method
+        #return self._name
+        return f"client name is: {self._name}"  # _ means internal, we cannot access this attribute outside the class
+    @name.setter
+    def name(self, newname):
+        self._name=newname                     # _ means internal, we cannot access this attribute outside the class
+
+    @property
+    def local_deposit(self):  # we decorate this method with a property decorator in order to be a getter method
+        # return self.local_deposit
+        return f"client local_deposit is: {self._local_deposit}"  # _ means internal, we cannot access this attribute outside the class
+
+    @local_deposit.setter
+    def local_deposit(self, newlocal_deposit):
+        self._local_deposit = newlocal_deposit  # _ means internal, we cannot access this attribute outside the class
+
+    @name.deleter
+    def name(self):
+        del self._name
+        print("name is deleted")
+
+    @local_deposit.deleter                         # must have a getter and a setter to be deleted
+    def local_deposit(self):
+        del self._local_deposit
+        print("local_deposit is deleted")
+
+     # main Program
+client1=Bank_Client("manal", 1000)
+client2=Bank_Client("Sandy", 1000)
+
+print (client2.name)                         # we did not use _    ie to be used only inside the class
+print (client2.fulldata)
+client2.newname="sue"
+client2.newlocal_deposit=6000
+del client2.name
+del client2.local_deposit
+print (client2.newname)
+print(client2.newlocal_deposit)
+
