@@ -1,0 +1,38 @@
+#static, class and instance methods
+#instance method:defined within the class and uses (self), it operates on the instances
+#any change in the instance method will affect the instance
+
+#class method:defined within the class and uses (cls), it deals with class variables
+#any change in the class method will affect the class itself, it is used to edit the class
+
+#static method:defined anywhere in the program, only related to the class
+#any change in the static method does not affect the class nor the instance
+class Bank_client:
+    count=0
+    interest=1.1
+    def __init__(self, name, local_deposit):
+        self.name=name
+        self.local_deposit=local_deposit
+        Bank_client.count +=1
+    def total_money(self):
+        return self.interest*self.local_deposit
+    @staticmethod
+    def greeting():
+        return "Hello!"
+
+    @staticmethod
+    def bank_data(bank_name, branch):
+        return f"the bank is {bank_name}, branch is {branch}"
+    @classmethod
+    def deposit_in_le(cls, name, deposit_dollar):
+        local_deposit=deposit_dollar*50
+        return cls(name, local_deposit)
+# main program
+client1=Bank_client("Sandy", 5000)
+client2=Bank_client.deposit_in_le("Sue", 30)
+print(client1.name)
+print(client1.total_money())
+print(Bank_client.greeting())
+print(Bank_client.bank_data("Al ahly", "Giza"))
+print("total for client2", client2.total_money())
+
