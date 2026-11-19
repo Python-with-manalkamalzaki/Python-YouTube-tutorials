@@ -1,0 +1,22 @@
+# magic methods or dunder methods--used only with a class
+# we use them to give functionality to our user_defined objects
+class Fruit:
+    def __init__(self,name,price):
+        self.name = name
+        self.price = price
+    def __str__ (self):
+        #return f"available fruit is {self.name} "
+        return f"{self.name} costs ${self.price}"
+    def __repr__ (self):
+        #return f"available fruit is {self.name} "
+        return f"Fruit(name='{self.name}', price={self.price})"
+    def __len__ (self):
+        return len(self.name)
+    def __add__ (self, other):
+        return self.price+other.price
+fruit1=Fruit("banana", 10)
+fruit2=Fruit("fig", 20)
+print(fruit1+fruit2)
+print(str(fruit1))
+print(repr(fruit1))
+print(len(fruit2))
