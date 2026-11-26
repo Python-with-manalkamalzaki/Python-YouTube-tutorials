@@ -1,0 +1,100 @@
+operating over 2 tuples:
+#code 1
+my_tuple_1=(10, 5)
+my_tuple_2=(20, 8)
+print(my_tuple_1)    #prints the first tuple
+print(my_tuple_2)    #prints the second tuple
+
+z=my_tuple_1[0] + my_tuple_2[0], my_tuple_1[1] + my_tuple_2[1]
+print(z)          #prints the added tuples
+
+#code 2
+class My_tuple:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __getitem__(self, index): #__getitem__ retrieves the value of the items from the instance
+        if index == 0:
+            return self.x  #assigns the value of the first index of an instance to x
+        else:
+            return self.y  #assigns the value of the second index of an instance to y
+
+    def __repr__(self):  # use __repr__ to display output
+        return f"The result is ({self.x}, {self.y})"
+
+my_tuple_1 = My_tuple(10.5, 5.6)
+print(my_tuple_1)    #prints the first tuple
+
+#code 3
+class My_tuple:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    # def add (self, other):          # user function
+    #     return My_tuple(self.x + other.x, self.y + other.y)
+    def __add__(self, other):         # user function
+        return My_tuple(self.x + other.x, self.y + other.y)
+    def __repr__(self):   # displays the output of the desired magic method
+        return f"the addition result is: ({self.x}, {self.y})"
+my_tuple_1 = My_tuple(10, 5)
+my_tuple_2 = My_tuple (2, 3)
+
+#z = my_tuple_1.add(my_tuple_2)  # variable = instance 1.function(instance 2)
+z=my_tuple_1+my_tuple_2
+print(z)
+
+#code 4
+class My_tuple:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other):      # magic method
+        return My_tuple(self.x + other.x, self.y + other.y)
+    def __sub__(self, other):      # magic method
+        return My_tuple(self.x - other.x, self.y - other.y)
+    def __mul__(self, other):      # magic method
+        return My_tuple(self.x * other.x, self.y * other.y)
+    def __eq__(self, other):      # magic method
+        return My_tuple(self.x == other.x, self.y == other.y)
+    def __gt__(self, other):      # magic method
+        return My_tuple(self.x > other.x, self.y > other.y)
+    def __repr__(self):   # displays the output of the desired magic method
+        return f"the result is: ({self.x}, {self.y})"
+my_tuple_1 = My_tuple(10, 5)
+my_tuple_2 = My_tuple (2, 3)
+
+z1 = my_tuple_1 + my_tuple_2 # variable = instance 1 + instance 2
+print("+", z1) # activated by the __repr__ , otherwise the location of z will be printed
+
+z2 = my_tuple_1 - my_tuple_2
+print("-", z2)
+z3 = my_tuple_1 * my_tuple_2
+print("*", z3)
+z4 = my_tuple_1 == my_tuple_2
+print("==", z4)
+z5 = my_tuple_1 > my_tuple_2
+print(">", z5)
+
+#code 5 # with main
+class My_tuple:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other):
+        return My_tuple(self.x + other.x, self.y + other.y)
+
+    def __repr__(self):   # displays the output of the desired magic method
+        return f"the result is: ({self.x}, {self.y})"
+
+def main():
+    my_tuple_1 = My_tuple(10, 5)
+    my_tuple_2 = My_tuple (2, 3)
+
+    z1 = my_tuple_1 + my_tuple_2
+    print(z1)
+
+if __name__ == "__main__":
+    main()    #runs the main program
+
+
